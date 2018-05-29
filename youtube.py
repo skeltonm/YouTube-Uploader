@@ -169,8 +169,10 @@ if __name__ == '__main__':
         reader = csv.reader(input_file)
 
         for row in reader:
+            file = row[1]
+
+            args['file'] = file
             args['title'] = row[0]
-            args['file'] = row[1]
 
             try:
                 t0 = time.perf_counter()
