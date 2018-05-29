@@ -1,0 +1,22 @@
+{
+    "_class": "OAuth2Credentials",
+    "id_token_jwt": null,
+    "refresh_token": "[refresh_token]",
+    "id_token": null,
+    "token_info_uri": null,
+    "client_id": "[client_id]",
+    "scopes": [],
+    "token_expiry": "2018-01-01T00:00:00Z",
+    "token_uri": "https://accounts.google.com/o/oauth2/token",
+    "_module": "oauth2client.client",
+    "user_agent": null,
+    "client_secret": "[client_secret]",
+    "token_response": {
+        "token_type": "Bearer",
+        "expires_in": 3600,
+        "access_token": "[access_token]"
+    },
+    "invalid": false,
+    "revoke_uri": "https://accounts.google.com/o/oauth2/revoke",
+    "access_token": "[access_token]"
+}
