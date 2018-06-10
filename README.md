@@ -40,3 +40,9 @@ To use, add the videos you would like to upload to files.csv.  Then you can invo
 ```bash
 python youtube.py
 ```
+
+To specify the location of the csv input file.
+
+```bash
+python youtube.py ~/files-to-upload.csv
+```
