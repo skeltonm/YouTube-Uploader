@@ -1,13 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 from http import client
 
 import csv
-import httplib2
 import os
 import random
 import sys
 import time
+import httplib2
 
 from apiclient.discovery import build
 from apiclient.errors import HttpError
@@ -153,7 +153,7 @@ def resumable_upload(insert_request):
             time.sleep(sleep_seconds)
 
 
-if __name__ == '__main__':
+def main():
     args = {
         'file': '',
         'title': '',
@@ -165,8 +165,10 @@ if __name__ == '__main__':
 
     youtube = get_authenticated_service(args)
 
+    input_file_location = sys.argv[1] if len(sys.argv) > 1 else 'files.csv'
+
     # Get the list of videos to upload
-    with open('files.csv', 'r') as input_file:
+    with open(input_file_location, 'r') as input_file:
         reader = csv.DictReader(input_file)
 
         for row in reader:
@@ -196,3 +198,7 @@ if __name__ == '__main__':
                 print('Uploaded %s in %s seconds' % (file, str(int(time.perf_counter() - t0))))
             except HttpError as e:
                 print("An HTTP error %d occurred:\n%s" % (e.resp.status, e.content))
+
+
+if __name__ == '__main__':
+    main()
