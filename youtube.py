@@ -152,12 +152,13 @@ def resumable_upload(insert_request):
             print("Sleeping %f seconds and then retrying..." % sleep_seconds)
             time.sleep(sleep_seconds)
 
+
 if __name__ == '__main__':
     args = {
         'file': '',
         'title': '',
         'description': '',
-        'category': 22,
+        'category': 0,
         'keywords': '',
         'privacyStatus': 'public'
     }
@@ -166,13 +167,26 @@ if __name__ == '__main__':
 
     # Get the list of videos to upload
     with open('files.csv', 'r') as input_file:
-        reader = csv.reader(input_file)
+        reader = csv.DictReader(input_file)
 
         for row in reader:
-            file = row[1]
+            file = row['file']
 
             args['file'] = file
-            args['title'] = row[0]
+            args['title'] = row['title']
+
+            # Optional arguments
+            if 'description' in row:
+                args['description'] = row['description']
+
+            if 'category' in row:
+                args['category'] = row['category']
+
+            if 'keywords' in row:
+                args['keywords'] = row['keywords']
+
+            if 'privacyStatus' in row:
+                args['privacyStatus'] = row['privacyStatus']
 
             try:
                 t0 = time.perf_counter()
